@@ -1,12 +1,12 @@
-
 import React, { Component } from 'react';
 import './Details.css';
+import {connect} from 'react-redux';
 
 class Details extends Component {
   
   componentDidMount(){
     // This will call our getMovies/getGeners generators on load so we can display on DOM
-    this.props.dispatch({ type: 'FETCH_GENRES' });
+    // this.props.dispatch({ type: 'FETCH_GENRES' });
 }
 
   // Renders the entire Details on the DOM
@@ -21,4 +21,4 @@ class Details extends Component {
   }
 }
 
-export default Details;
+export default connect()(Details);
