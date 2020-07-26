@@ -10,8 +10,13 @@ class Details extends Component {
 }
 
   handleHome = () => {
-    console.log('In backHome');
+    console.log('In handleHome');
     this.props.history.push('/');
+  }
+
+  handleEdit = () => {
+    console.log('In handleEdit');
+    this.props.history.push('/edit');
   }
 
   // Renders the entire Details on the DOM
@@ -20,6 +25,7 @@ class Details extends Component {
       <div className="Details">
         <h1>Details</h1>
         <button onClick={this.handleHome}>Back to List</button>
+        <button onClick={this.handleEdit}>Edit</button>
         <br/>
         
       </div>
@@ -27,4 +33,8 @@ class Details extends Component {
   }
 }
 
-export default connect()(Details);
+const mapStateToProps = (reduxState)=>({
+  reduxState
+})
+
+export default connect(mapStateToProps)(Details);
