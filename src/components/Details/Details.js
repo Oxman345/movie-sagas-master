@@ -9,11 +9,17 @@ class Details extends Component {
     // this.props.dispatch({ type: 'FETCH_GENRES' });
 }
 
+  handleHome = () => {
+    console.log('In backHome');
+    this.props.history.push('/');
+  }
+
   // Renders the entire Details on the DOM
   render() {
     return (
       <div className="Details">
         <h1>Details</h1>
+        <button onClick={this.handleHome}>Back to List</button>
         <br/>
         
       </div>

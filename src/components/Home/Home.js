@@ -22,11 +22,13 @@ class Home extends Component {
       <div className="Home">
         <h1>Home</h1>
        <form>
-        {this.props.reduxState.movies.length>0 ? this.props.reduxState.movies.map((movies, index)=> {
-            return (<ul key={index} id={movies.id}>
+        {
+            this.props.reduxState.movies.length>0 ? 
+            this.props.reduxState.movies.map((movies, index)=>
+                    <ul key={index} id={movies.id}>
                         <li onClick={this.handleClick}>{movies.title}</li>
-                    </ul>)
-        }) : false }
+                    </ul>) :
+            false }
         </form>
 
         <br/>
