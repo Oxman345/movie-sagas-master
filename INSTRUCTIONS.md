@@ -39,11 +39,12 @@ Genres can be applied to many different movies. Movies can have multiple genres.
 
 ### Home / List Page
 
-This should display all of the movies in the movie database. When a movie poster is clicked, a user should be brought to the `/details` view.
+- [] This should display all of the movies in the movie database. 
+- [] When a movie poster is clicked, a user should be brought to the `/details` view.
 
 ### Details Page
 
-This should show all details **including genres**, for the selected movie.
+- [] This should show all details **including genres**, for the selected movie.
 
 The details page should have the buttons:
 

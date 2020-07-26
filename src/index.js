@@ -20,31 +20,29 @@ function* rootSaga() {
     yield takeEvery( 'FETCH_GENRES', getGenres );
 }
 
-function* getMovies(action) {
+function* getMovies() {
     try{
         console.log('In getMovies generator.')
-        const response = yield axios.get('/get/movies',action.payload);
-        yield console.log('In getMovies', response);
-        yield put ({ type: 'SET_MOVIES'})
+        const response = yield axios.get('/movies');
+        yield console.log('In getMovies', response.data);
+        yield put ({ type: 'SET_MOVIES', payload: response.data})
     }
     catch(error) {
-        console.log( 'Trouble fething movies', error )
+        console.log( 'Trouble fetching movies', error )
     }
 };
 
-function* getGenres(action) {
+function* getGenres() {
     try{
         console.log('In getGenres generator.')
-        const response = yield axios.get('/get/genres',action.payload);
-        yield console.log('In getGenres', response);
-        yield put ({ type: 'SET_GENRES'})
+        const response = yield axios.get('/genres');
+        yield console.log('In getGenres', response.data);
+        yield put ({ type: 'SET_GENRES', payload: response.data})
     }
     catch(error) {
         console.log( 'Trouble fething genres', error )
     }
 };
-
-
 
 
 // Create sagaMiddleware

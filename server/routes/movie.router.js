@@ -1,6 +1,5 @@
 const express = require('express');
 const pool = require('../modules/pool');
-const { query } = require('../modules/pool');
 const router = express.Router();
 
 // return all favorite images

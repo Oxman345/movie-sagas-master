@@ -7,7 +7,7 @@ class Home extends Component {
     componentDidMount(){
         // This will call our getMovies/getGeners generators on load so we can display on DOM
         this.props.dispatch({ type: 'FETCH_MOVIES' });
-        this.props.dispatch({ type: 'FETCH_GENRES' });
+        
     }
 
   // Renders the entire Home on the DOM
@@ -15,9 +15,12 @@ class Home extends Component {
     return (
       <div className="Home">
         <h1>Home</h1>
-        {
-            JSON.stringify(this.props.reduxState.movies)
-        }
+        {this.props.reduxState.movies.length>0 ? this.props.reduxState.movies.map((movies, index)=> {
+            return (<ul key={index}>
+                        <li>{movies.title}</li>
+                    </ul>)
+        }) : false }
+
         <br/>
         
       </div>
