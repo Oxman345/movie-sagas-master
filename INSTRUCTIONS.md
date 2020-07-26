@@ -11,15 +11,16 @@ We'll be able to see movies that exist in our DB. We'll also be able to see deta
 
 ## Database Setup
 
-1. Create a database named `saga_movies_weekend`
-2. Run the queries from `database.sql` on the `saga_movies_weekend` database.
-3. You will need to create the junction table between the `movies` and `genres` tables!
+1. [x] Create a database named `saga_movies_weekend`
+2. [x] Run the queries from `database.sql` on the `saga_movies_weekend` database.
+psql DB_Name < database_file.sql
+3. [x] You will need to create the junction table between the `movies` and `genres` tables!
 
 ## Install Dependencies
 
-1. `npm install`
-2. `npm run server`
-3. `npm run client`
+1. [x] `npm install`
+2. [x] `npm run server`
+3. [x] `npm run client`
 
 ## Notes
 
@@ -46,8 +47,8 @@ This should show all details **including genres**, for the selected movie.
 
 The details page should have the buttons:
 
-- `Back to List` button, which should bring the user to the Home Page
-- `Edit` button, which should bring the user to the Edit Page
+- [] `Back to List` button, which should bring the user to the Home Page
+- [] `Edit` button, which should bring the user to the Edit Page
 
 > Base functionality does not require the movie details to load correctly after refresh of the browser.
 
@@ -55,13 +56,13 @@ The details page should have the buttons:
 
 This should show:
 
-- an input field (for changing the movie title), for the selected movie.
-- a textarea (for changing the movie description)
+- [] an input field (for changing the movie title), for the selected movie.
+- [] a textarea (for changing the movie description)
 
 The edit page should have the buttons:
 
-- `Cancel` button, which should bring the user to the Details Page
-- `Save` button, which should update the title and description in the database and bring the user to the Details Page
+- [] `Cancel` button, which should bring the user to the Details Page
+- [] `Save` button, which should update the title and description in the database and bring the user to the Details Page
 
 > Base functionality does not require the current values (the existing movie title and description) to populate in the input and textarea.
 
