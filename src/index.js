@@ -9,14 +9,47 @@ import { Provider } from 'react-redux';
 import logger from 'redux-logger';
 // Import saga middleware
 import createSagaMiddleware from 'redux-saga';
+import axios from 'axios';
+import {takeEvery, put} from 'redux-saga/effects';
 
+
+// ------------ THESE ARE OUR GENERATOR FUNCTIONS --------------
 // Create the rootSaga generator function
 function* rootSaga() {
-
+    yield takeEvery( 'FETCH_MOVIES', getMovies );
+    yield takeEvery( 'UPDATE_MOVIE', updateMovies );
+    // yield takeEvery( 'SET_DETAILS', getDetails );
 }
+
+function* getMovies() {
+    try{
+        console.log('In getMovies generator.')
+        const response = yield axios.get('/movies');
+        yield console.log('In getMovies', response.data);
+        yield put ({ type: 'SET_MOVIES', payload: response.data})
+    }
+    catch(error) {
+        console.log( 'Trouble fetching movies', error )
+    }
+};
+
+function* updateMovies(action) {
+    try{
+        console.log('In updateMovies generator.')
+        const response = yield axios.put('/movies', action.payload);
+        yield console.log('In updateMovies', response.data);
+    }
+    catch(error) {
+        console.log( 'Trouble updating movies ', error )
+    }
+};
+
 
 // Create sagaMiddleware
 const sagaMiddleware = createSagaMiddleware();
+
+
+// ------------ THESE ARE OUR REDUCERS --------------
 
 // Used to store movies returned from the server
 const movies = (state = [], action) => {
@@ -28,10 +61,19 @@ const movies = (state = [], action) => {
     }
 }
 
-// Used to store the movie genres
-const genres = (state = [], action) => {
+// // Used to store the movie genres
+// const genres = (state = [], action) => {
+//     switch (action.type) {
+//         case 'SET_GENRES':
+//             return action.payload;
+//         default:
+//             return state;
+//     }
+// }
+
+const details = (state = [], action) => {
     switch (action.type) {
-        case 'SET_GENRES':
+        case 'SET_DETAILS':
             return action.payload;
         default:
             return state;
@@ -42,7 +84,7 @@ const genres = (state = [], action) => {
 const storeInstance = createStore(
     combineReducers({
         movies,
-        genres,
+        details,
     }),
     // Add sagaMiddleware to our store
     applyMiddleware(sagaMiddleware, logger),
