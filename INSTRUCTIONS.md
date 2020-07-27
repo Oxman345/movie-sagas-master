@@ -44,7 +44,7 @@ Genres can be applied to many different movies. Movies can have multiple genres.
 
 ### Details Page
 
-- [] This should show all details **including genres**, for the selected movie.
+- [x] This should show all details **including genres**, for the selected movie.
 
 The details page should have the buttons:
 
@@ -57,13 +57,13 @@ The details page should have the buttons:
 
 This should show:
 
-- [] an input field (for changing the movie title), for the selected movie.
-- [] a textarea (for changing the movie description)
+- [x] an input field (for changing the movie title), for the selected movie.
+- [x] a textarea (for changing the movie description)
 
 The edit page should have the buttons:
 
-- [] `Cancel` button, which should bring the user to the Details Page
-- [] `Save` button, which should update the title and description in the database and bring the user to the Details Page
+- [x] `Cancel` button, which should bring the user to the Details Page
+- [x] `Save` button, which should update the title and description in the database and bring the user to the Details Page
 
 > Base functionality does not require the current values (the existing movie title and description) to populate in the input and textarea.
 

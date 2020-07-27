@@ -10,10 +10,10 @@ class Home extends Component {
         
     }
 
-    handleClick = (event) => {
-        event.preventDefault();
+    handleClick = (movies) => {
         console.log('In handleClick');
-        this.props.history.push('/details');
+        this.props.dispatch({ type: 'SET_DETAILS', payload: movies });
+        this.props.history.push('/details/');
     }
 
   // Renders the entire Home on the DOM
@@ -25,8 +25,12 @@ class Home extends Component {
         {
             this.props.reduxState.movies.length>0 ? 
             this.props.reduxState.movies.map((movies, index)=>
-                    <ul key={index} id={movies.id}>
-                        <li onClick={this.handleClick}>{movies.title}</li>
+                    <ul key={index} movies={movies} id={movies.id}>
+                        <li onClick={()=>this.handleClick(movies)}>
+                            <img
+                            src={movies.poster}>
+                            </ img>                        
+                        </li>
                     </ul>) :
             false }
         </form>
