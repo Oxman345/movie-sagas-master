@@ -55,3 +55,82 @@ VALUES
 ('Science Fiction'),
 ('Space-Opera'),
 ('Superhero');
+
+SELECT * FROM movies;
+
+SELECT * FROM genres;
+
+SELECT * FROM movie_genres;
+
+
+CREATE TABLE movie_genres
+(
+    movie_id int NOT NULL,
+    genre_id int NOT NULL,
+    CONSTRAINT movie_genre_id PRIMARY KEY
+    (
+        movie_id,
+        genre_id
+    ),
+    FOREIGN KEY (movie_id) REFERENCES movies (id),
+    FOREIGN KEY (genre_id) REFERENCES genres (id)
+);
+
+-- Values inserted for the junction table
+INSERT INTO "movie_genres" ("movie_id", "genre_id")
+VALUES
+(1, 1),
+(1, 2),
+(1, 6),
+(1, 11),
+(2, 2),
+(2, 8),
+(2, 9),
+(2, 10),
+(3, 1),
+(3, 11),
+(3, 13),
+(4, 1),
+(4, 2),
+(4, 4),
+(4, 7),
+(5, 6),
+(5, 13),
+(6, 8),
+(7, 1),
+(7, 6),
+(7, 13),
+(8, 1),
+(8, 2),
+(8, 8),
+(9, 1),
+(9, 2),
+(9, 4),
+(9, 8),
+(10, 1),
+(10, 6),
+(10, 7),
+(10, 11),
+(10, 12),
+(11, 1),
+(11, 5),
+(11, 11),
+(11, 13),
+(12, 3),
+(12, 6),
+(13, 5),
+(13, 6),
+(13, 10);
+
+-- this is used to get movies and show the genres associated with that movie
+SELECT movies.id, title, description, poster, array_agg(genres.name)
+    FROM movies
+    JOIN movie_genres on movies.id = movie_genres.movie_id
+    JOIN genres ON movie_genres.genre_id = genres.id
+    GROUP BY movies.id
+    ORDER BY title ASC;
+    
+  -- this will update the movie title and description on edit.
+    UPDATE movies 
+    SET "title" = $1, "description" = $2
+    WHERE "id" = $3;
